@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+<body>
+    <h1>Skills</h1>
+    <h3><a href="/skills/new">Submit a new skill</a></h3>
+    <ul>
+        <% skills.forEach(s => { %>
+            <li>
+                <form method="POST" action="/skills/<%= s.id %>" class="check-form">
+                    <button type="submit">✓</button>
+                </form>
+                <form method="POST" action="/skills/<%= s.id %>?_method=DELETE " class="delete-form">
+                    <button type="submit">X</button>
+                </form>
+                <a href="/skills/<%= s.id %> "><%= s.skill %> </a>
+                &emsp;
+                (id:<%= s.id %>) 
+                &emsp;
+                <%= s.done ? 'learned' : 'need to learn' %> 
+            </li>         
+        <% }) %>
+    </ul>
+
+    
+</body>
+</html>
